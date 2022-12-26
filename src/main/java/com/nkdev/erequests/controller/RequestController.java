@@ -1,5 +1,7 @@
 package com.nkdev.erequests.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +27,6 @@ public class RequestController {
 	@PostMapping("/request")
 	public void placeRequest(@RequestBody Request request) {
 		this.service.saveRequest(request);
-		System.out.println(request);
 	}
 	
 	@GetMapping("/request/{id}")
@@ -37,5 +38,10 @@ public class RequestController {
 		}
 		
 		return request;
+	}
+	
+	@GetMapping("/request")
+	private List<Request> getRequests(){
+		return this.service.getRequests();
 	}
 }

@@ -21,7 +21,7 @@ public class RequestDAOImpl implements RequestDAO {
 	public List<Request> getRequests() {
 		Session session = entityManager.unwrap(Session.class);
 		
-		Query<Request> query = session.createQuery("from Customer", Request.class);
+		Query<Request> query = session.createQuery("from Request", Request.class);
 		List<Request> request = query.getResultList();
 		
 		return request;
