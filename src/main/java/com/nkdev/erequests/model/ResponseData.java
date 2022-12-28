@@ -7,6 +7,7 @@ public class ResponseData {
 	private String url;
 	private String type;
 	private long size;
+	private int id;
 	
 	
 	public ResponseData() {
@@ -14,7 +15,8 @@ public class ResponseData {
 	}
 
 
-	public ResponseData(String name, String url, String type, long size) {
+	public ResponseData(int id, String name, String url, String type, long size) {
+		this.id = id;
 		this.name = name;
 		this.url = url;
 		this.type = type;
@@ -60,5 +62,14 @@ public class ResponseData {
 	public void setSize(long size) {
 		this.size = size;
 	}
-	
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+		
 }

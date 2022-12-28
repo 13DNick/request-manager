@@ -6,6 +6,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import com.nkdev.erequests.service.DocumentService;
 import com.nkdev.erequests.service.RequestService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class DocumentController {
 	
 	@Autowired
@@ -50,7 +52,7 @@ public class DocumentController {
 		downloadURL = ServletUriComponentsBuilder.fromCurrentContextPath()
 				.path("/download/").path(Integer.toString(document.getId())).toUriString();
 		
-		return new ResponseData(document.getName(), downloadURL, file.getContentType(), file.getSize());
+		return new ResponseData(request.getId(), document.getName(), downloadURL, file.getContentType(), file.getSize());
 	}
 	
 	@GetMapping("/download/{id}")
