@@ -39,4 +39,34 @@ public class RequestServiceImpl implements RequestService{
 		this.dao.deleteRequest(id);
 	}
 
+	@Override
+	@Transactional
+	public List<Request> getRequestsByName() {
+		return this.dao.getRequestsByName();
+	}
+
+	@Override
+	@Transactional
+	public List<Request> getRequestsByEmployeeId() {
+		return this.dao.getRequestsByEmployeeId();
+	}	
+	
+	@Override
+	@Transactional
+	public List<Request> getRequestsByEmail(){
+		return this.dao.getRequestsByEmail();
+	}
+	
+	@Override
+	@Transactional
+	public List<Request> getRequestsByDepartment(){
+		return this.dao.getRequestsByDepartment();
+	}
+	
+	@Override
+	@Transactional
+	public List<Request> getRequestsByStatus(){
+		return this.dao.getRequestsByStatus();
+	}
+	
 }

@@ -14,5 +14,14 @@ public interface RequestDAO {
 
 	public void deleteRequest(int id);
 	
+	public List<Request> getRequestsByName();
+	
+	public List<Request> getRequestsByEmployeeId();
+	
+	public List<Request> getRequestsByEmail();
+	
+	public List<Request> getRequestsByDepartment();
+	
+	public List<Request> getRequestsByStatus();
 }
 

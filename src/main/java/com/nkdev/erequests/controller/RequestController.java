@@ -30,7 +30,7 @@ public class RequestController {
 	}
 	
 	@GetMapping("/request/{id}")
-	private Request getRequest(@PathVariable int id) {
+	public Request getRequest(@PathVariable int id) {
 		Request request = this.service.getRequest(id);
 		
 		if(request == null) {
@@ -41,7 +41,32 @@ public class RequestController {
 	}
 	
 	@GetMapping("/request")
-	private List<Request> getRequests(){
+	public List<Request> getRequests(){
 		return this.service.getRequests();
+	}
+	
+	@GetMapping("/request/name")
+	public List<Request> getRequestsByName(){
+		return this.service.getRequestsByName();
+	}
+	
+	@GetMapping("/request/id")
+	public List<Request> getRequestsByEmployeeId(){
+		return this.service.getRequestsByEmployeeId();
+	}
+	
+	@GetMapping("/request/email")
+	public List<Request> getRequestsByEmail(){
+		return this.service.getRequestsByEmail();
+	}
+	
+	@GetMapping("/request/department")
+	public List<Request> getRequestsByDepartment(){
+		return this.service.getRequestsByDepartment();
+	}
+	
+	@GetMapping("/request/status")
+	public List<Request> getRequestsByStatus(){
+		return this.service.getRequestsByStatus();
 	}
 }

@@ -49,4 +49,43 @@ public class RequestDAOImpl implements RequestDAO {
 		query.executeUpdate();
 	}
 
+	@Override
+	public List<Request> getRequestsByName() {
+		Session session = entityManager.unwrap(Session.class);
+		Query<Request> q = session.createQuery("from Request r order by r.name", Request.class);
+		List<Request> requests = q.getResultList();
+		return requests;
+	}
+	
+	@Override
+	public List<Request> getRequestsByEmployeeId(){
+		Session session = entityManager.unwrap(Session.class);
+		Query<Request> q = session.createQuery("from Request r order by r.employeeId", Request.class);
+		List<Request> requests = q.getResultList();
+		return requests;
+	}
+	
+	@Override
+	public List<Request> getRequestsByEmail(){
+		Session session = entityManager.unwrap(Session.class);
+		Query<Request> q = session.createQuery("from Request r order by r.email", Request.class);
+		List<Request> requests = q.getResultList();
+		return requests;
+	}
+
+	@Override
+	public List<Request> getRequestsByDepartment() {
+		Session session = entityManager.unwrap(Session.class);
+		Query<Request> q = session.createQuery("from Request r order by r.department", Request.class);
+		List<Request> requests = q.getResultList();
+		return requests;
+	}
+	
+	@Override
+	public List<Request> getRequestsByStatus() {
+		Session session = entityManager.unwrap(Session.class);
+		Query<Request> q = session.createQuery("from Request r order by r.employmentStatus", Request.class);
+		List<Request> requests = q.getResultList();
+		return requests;
+	}
 }
