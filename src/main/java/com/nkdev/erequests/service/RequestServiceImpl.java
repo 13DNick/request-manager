@@ -38,35 +38,40 @@ public class RequestServiceImpl implements RequestService{
 	public void deleteRequest(int id) {
 		this.dao.deleteRequest(id);
 	}
-
+	
 	@Override
 	@Transactional
-	public List<Request> getRequestsByName() {
-		return this.dao.getRequestsByName();
+	public List<Request> getRequestsByStatusSearch(String term) {
+		return this.dao.getRequestsByStatusSearch(term);
 	}
 
 	@Override
 	@Transactional
-	public List<Request> getRequestsByEmployeeId() {
-		return this.dao.getRequestsByEmployeeId();
-	}	
-	
+	public List<Request> getRequestsByDepartmentSearch(String term) {
+		return this.dao.getRequestsByDepartmentSearch(term);
+	}
+
 	@Override
 	@Transactional
-	public List<Request> getRequestsByEmail(){
-		return this.dao.getRequestsByEmail();
+	public List<Request> getRequestsByEmailSearch(String term) {
+		return this.dao.getRequestsByEmailSearch(term);
+	}
+
+	@Override
+	@Transactional
+	public List<Request> getRequestsByNameSearch(String term) {
+		return this.dao.getRequestsByNameSearch(term);
+	}
+
+	@Override
+	@Transactional
+	public List<Request> getRequestsByIdSearch(String term) {
+		return this.dao.getRequestsByIdSearch(term);
 	}
 	
 	@Override
 	@Transactional
-	public List<Request> getRequestsByDepartment(){
-		return this.dao.getRequestsByDepartment();
+	public List<Request> getRequestsByEIdSearch(String term){
+		return this.dao.getRequestsByEIdSearch(term);
 	}
-	
-	@Override
-	@Transactional
-	public List<Request> getRequestsByStatus(){
-		return this.dao.getRequestsByStatus();
-	}
-	
 }

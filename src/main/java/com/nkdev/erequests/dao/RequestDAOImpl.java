@@ -50,41 +50,55 @@ public class RequestDAOImpl implements RequestDAO {
 	}
 
 	@Override
-	public List<Request> getRequestsByName() {
+	public List<Request> getRequestsByStatusSearch(String term) {
 		Session session = entityManager.unwrap(Session.class);
-		Query<Request> q = session.createQuery("from Request r order by r.name", Request.class);
-		List<Request> requests = q.getResultList();
-		return requests;
-	}
-	
-	@Override
-	public List<Request> getRequestsByEmployeeId(){
-		Session session = entityManager.unwrap(Session.class);
-		Query<Request> q = session.createQuery("from Request r order by r.employeeId", Request.class);
-		List<Request> requests = q.getResultList();
-		return requests;
-	}
-	
-	@Override
-	public List<Request> getRequestsByEmail(){
-		Session session = entityManager.unwrap(Session.class);
-		Query<Request> q = session.createQuery("from Request r order by r.email", Request.class);
+		Query<Request> q = session.createQuery("from Request r where r.employmentStatus like :term", Request.class);
+		q.setParameter("term", "%" + term + "%");
 		List<Request> requests = q.getResultList();
 		return requests;
 	}
 
 	@Override
-	public List<Request> getRequestsByDepartment() {
+	public List<Request> getRequestsByDepartmentSearch(String term) {
 		Session session = entityManager.unwrap(Session.class);
-		Query<Request> q = session.createQuery("from Request r order by r.department", Request.class);
+		Query<Request> q = session.createQuery("from Request r where r.department like :term", Request.class);
+		q.setParameter("term", "%" + term + "%");
+		List<Request> requests = q.getResultList();
+		return requests;
+	}
+
+	@Override
+	public List<Request> getRequestsByEmailSearch(String term) {
+		Session session = entityManager.unwrap(Session.class);
+		Query<Request> q = session.createQuery("from Request r where r.email like :term", Request.class);
+		q.setParameter("term", "%" + term + "%");
+		List<Request> requests = q.getResultList();
+		return requests;
+	}
+
+	@Override
+	public List<Request> getRequestsByNameSearch(String term) {
+		Session session = entityManager.unwrap(Session.class);
+		Query<Request> q = session.createQuery("from Request r where r.name like :term", Request.class);
+		q.setParameter("term", "%" + term + "%");
+		List<Request> requests = q.getResultList();
+		return requests;
+	}
+
+	@Override
+	public List<Request> getRequestsByIdSearch(String term) {
+		Session session = entityManager.unwrap(Session.class);
+		Query<Request> q = session.createQuery("from Request r where r.id like :term", Request.class);
+		q.setParameter("term", term);
 		List<Request> requests = q.getResultList();
 		return requests;
 	}
 	
 	@Override
-	public List<Request> getRequestsByStatus() {
+	public List<Request> getRequestsByEIdSearch(String term) {
 		Session session = entityManager.unwrap(Session.class);
-		Query<Request> q = session.createQuery("from Request r order by r.employmentStatus", Request.class);
+		Query<Request> q = session.createQuery("from Request r where r.employeeId like :term", Request.class);
+		q.setParameter("term", term);
 		List<Request> requests = q.getResultList();
 		return requests;
 	}

@@ -13,14 +13,16 @@ public interface RequestService {
 	public Request getRequest(int id);
 
 	public void deleteRequest(int id);
-	
-	public List<Request> getRequestsByName();
-	
-	public List<Request> getRequestsByEmployeeId();
-	
-	public List<Request> getRequestsByEmail();
-	
-	public List<Request> getRequestsByDepartment();
-	
-	public List<Request> getRequestsByStatus();
+
+	public List<Request> getRequestsByStatusSearch(String term);
+
+	public List<Request> getRequestsByDepartmentSearch(String term);
+
+	public List<Request> getRequestsByEmailSearch(String term);
+
+	public List<Request> getRequestsByNameSearch(String term);
+
+	public List<Request> getRequestsByIdSearch(String term);
+
+	List<Request> getRequestsByEIdSearch(String term);
 }

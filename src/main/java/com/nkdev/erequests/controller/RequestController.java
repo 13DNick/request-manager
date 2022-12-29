@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nkdev.erequests.entity.Request;
@@ -45,28 +46,25 @@ public class RequestController {
 		return this.service.getRequests();
 	}
 	
-	@GetMapping("/request/name")
-	public List<Request> getRequestsByName(){
-		return this.service.getRequestsByName();
-	}
-	
-	@GetMapping("/request/id")
-	public List<Request> getRequestsByEmployeeId(){
-		return this.service.getRequestsByEmployeeId();
-	}
-	
-	@GetMapping("/request/email")
-	public List<Request> getRequestsByEmail(){
-		return this.service.getRequestsByEmail();
-	}
-	
-	@GetMapping("/request/department")
-	public List<Request> getRequestsByDepartment(){
-		return this.service.getRequestsByDepartment();
-	}
-	
-	@GetMapping("/request/status")
-	public List<Request> getRequestsByStatus(){
-		return this.service.getRequestsByStatus();
+	@GetMapping("/request/search")
+	public List<Request> getRequestsBySearch(@RequestParam String term, @RequestParam String field){
+		
+		List<Request> list;
+		
+		if(field.equals("id")) {
+			list = this.service.getRequestsByIdSearch(term);
+		} else if(field.equals("name")) {
+			list = this.service.getRequestsByNameSearch(term);
+		} else if(field.equals("email")) {
+			list = this.service.getRequestsByEmailSearch(term);
+		} else if(field.equals("department")) {
+			list = this.service.getRequestsByDepartmentSearch(term);
+		} else if(field.equals("employeeId")){
+			list = this.service.getRequestsByEIdSearch(term);
+		} else {
+			list = this.service.getRequestsByStatusSearch(term);
+		}	
+		
+		return list;
 	}
 }
