@@ -1,5 +1,7 @@
 # request-manager
-api to manage requests and files with a database
+REST API to manage requests and files with a database
+
+View client repo: https://github.com/13DNick/request-client
 
 Database Schema
 
